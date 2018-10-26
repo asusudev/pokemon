@@ -50,6 +50,7 @@ namespace PokemonApp.API
             }
 
             // app.UseHttpsRedirection();
+            // sample github
 
             app.UseCors(builder => builder.WithOrigins("http://localhost:4200")
                                             .AllowAnyMethod()
