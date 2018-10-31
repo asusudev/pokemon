@@ -26,7 +26,7 @@ namespace PokemonApp.API.Controllers
         }
 
         [HttpPost("register")]
-        public async Task<IActionResult> Register(UserForRegisterDTO dtoModel)
+        public async Task<IActionResult> Register([FromBody]UserForRegisterDTO dtoModel)
         {
             dtoModel.Username = dtoModel.Username.ToLower();
 
@@ -46,7 +46,7 @@ namespace PokemonApp.API.Controllers
         }
 
         [HttpPost("login")]
-        public async Task<IActionResult> Login(UserForLoginDTO dtoModel)
+        public async Task<IActionResult> Login([FromBody]UserForLoginDTO dtoModel)
         {
             var userFromRepo = await _authRepository.Login(dtoModel.Username, dtoModel.Password);
 

@@ -68,6 +68,7 @@ namespace PokemonApp.API
             app.UseCors(builder => builder.WithOrigins("http://localhost:4200")
                                             .AllowAnyMethod()
                                             .AllowAnyHeader()
+                                            .AllowCredentials()
                                             );
 
             app.UseAuthentication();

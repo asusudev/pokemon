@@ -23,6 +23,7 @@ namespace PokemonApp.API.Controllers
 
         // GET api/values
         [HttpGet]
+        [AllowAnonymous]
         public async Task<IActionResult> Get()
         {
             var values = await _context.Values.ToListAsync();
@@ -32,6 +33,7 @@ namespace PokemonApp.API.Controllers
 
         // GET api/values/5
         [HttpGet("{id}")]
+        [AllowAnonymous]
         public async Task<IActionResult> Get(int id)
         {
             var value = await _context.Values.FirstOrDefaultAsync(v => v.Id == id);
