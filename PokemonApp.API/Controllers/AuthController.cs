@@ -47,7 +47,7 @@ namespace PokemonApp.API.Controllers
 
         [HttpPost("login")]
         public async Task<IActionResult> Login([FromBody]UserForLoginDTO dtoModel)
-        {
+        {            
             var userFromRepo = await _authRepository.Login(dtoModel.Username, dtoModel.Password);
 
             if(userFromRepo == null)
