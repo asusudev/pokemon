@@ -13,5 +13,7 @@ namespace PokemonApp.API.Data
         public DbSet<Value> Values { get; set; }
 
         public DbSet<AppUser> AppUsers { get; set; }
+
+        public DbSet<Photo> Photos { get; set; }
     }
 }

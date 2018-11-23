@@ -2,6 +2,7 @@ using System;
 using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.EntityFrameworkCore;
+using PokemonApp.API.Helpers;
 using PokemonApp.API.Models;
 
 namespace PokemonApp.API.Data
@@ -65,7 +66,7 @@ namespace PokemonApp.API.Data
             byte[] passwordHash;
             byte[] passwordSalt;
 
-            GeneratePasswordHash(password, out passwordHash, out passwordSalt);
+            PasswordHelper.GeneratePasswordHash(password, out passwordHash, out passwordSalt);
 
             appUser.PasswordHash = passwordHash;
             appUser.PasswordSalt = passwordSalt;
@@ -75,16 +76,6 @@ namespace PokemonApp.API.Data
             await _context.SaveChangesAsync();
 
             return appUser;
-        }
-
-        private void GeneratePasswordHash(string password, out byte[] passwordHash, out byte[] passwordSalt)
-        {
-            using(var hmac = new System.Security.Cryptography.HMACSHA512())
-            {
-                passwordSalt = hmac.Key;
-                passwordHash = hmac.ComputeHash(System.Text.Encoding.UTF8.GetBytes(password));
-            }
-            
         }
     }
 }
